@@ -1,0 +1,82 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'output.css' %}">
+	<link rel="shortcut icon" href="/media/ironman.png" type="image/x-icon">
+	<title>THE MCU API</title>
+</head>
+<body class="bg-zinc-800">
+	<header class="bg-zinc-800 sticky top-0 z-10">
+		<section class="mx-auto max-w-full p-4 flex justify-between items-center">
+			<h1 class="text-2xl sm:text-4xl text-white font-bold">
+				<a href="{% url 'home' %}">THE <span class="text-red-600 text-shadow-black text-shadow-sm">MCU</span> API</a>
+			</h1>
+			<div>
+				<nav class="text-white space-x-3 text-0.5xl sm:text-xl">
+					<a href="{% url 'redoc' %}" class="hover:opacity-70">Docs</a>
+					<a href="#characters" class="hover:opacity-70">Characters</a>
+					<a href="https://github.com/AbdullaNG/THE-MCU-API" target="blank">
+						<img src="/media/github.png" class="w-7 h-7 sm:w-10 sm:h-10 inline hover:scale-80 rounded-full">
+					</a>
+				</nav>
+			</div>
+		</section>
+	</header>
+
+	<main>
+		<section class="mask-b-from-70% mask-b-to-100% bg-[url(/media/logo.png)] w-full h-160 bg-cover flex flex-col justify-center text-center">
+			<h1 class="p-6 text-5xl sm:text-6xl font-bold text-shadow-black text-shadow-md text-white">THE <span class="text-red-600">MCU</span> API</h1>
+			<p class="pt-6 text-lg font-medium text-white text-shadow-black text-shadow-md block">
+				The RESTful API for The Marvel Cinematic Universe. Access data about characters from Earth-616.
+			</p>
+			<div class="pt-10 font-medium">
+				<a href="{% url 'swagger-ui' %}" class="inline-block text-center text-white text-lg w-40 h-15 bg-gray-800 hover:bg-gray-700 rounded-xl py-4 mr-2">Get Started</a>
+				<a href="/api/" class="inline-block text-center text-white text-lg w-40 h-15 bg-red-600 hover:bg-red-500 rounded-xl py-4 ml-2">API <img src="/media/external-link.png" class="w-4 h-4 inline ml-5 mb-1"></a>
+			</div>
+		</section>
+		<section id="characters" class="w-full flex flex-col justify-center items-center mt-20 scroll-mt-20 text-white">
+			<h1 class="text-4xl font-medium pb-6 mx-auto">Popular Characters</h1>
+			<p class="block text-lg font-medium pb-15 mx-auto">Most iconic characters from Earth-616</p>
+			<div class="w-14/15 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+				{% for character in characters %}
+				<div class="mx-auto rounded-xl border border-black hover:border-red-500 hover:shadow hover:shadow-red-500 bg-zinc-700 w-60 p-5 mt-10 hover:scale-110 transition ease-in-out duration-300 flex flex-col items-center">
+					<div class="group relative w-50 h-50">
+						<img src="{{ character.image1.url }}" class="rounded-xl absolute top-0 left-0 w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out group-hover:opacity-0"/>
+						<img src="{{ character.image2.url }}" class="rounded-xl absolute top-0 left-0 w-full h-full object-cover object-top opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"/>
+					</div>
+					<h1 class="text-xl mt-2 font-medium">{{ character.name }}</h1>
+					<hr class="bg-white h-0.5 w-1/2 mt-1 rounded-full">
+					<h1 class="text-lg font-medium">{{ character.alias }}</h1>
+					<div class="rounded-xl border-2 border-zinc-400 w-5/6 h-22 p-2 mt-4">
+						<p class="italic text-xs text-white">"{{ character.famous_phrase }}"</p>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<section class="flex flex-col items-center mt-20 text-center">
+			<hr class="bg-black w-full">
+			<h1 class="text-2xl sm:text-4xl text-white font-bold mt-15">
+				<a href="{% url 'home' %}">THE <span class="text-red-600 text-shadow-black text-shadow-sm">MCU</span> API</a>
+			</h1>
+			<p class="mt-7 text-lg font-medium text-white block">
+				The RESTful API for The Marvel Cinematic Universe.
+			</p>
+			<div class="mt-7 text-white">
+				<a href="/api/" class="hover:opacity-70">API</a>
+				<a href="{% url 'redoc' %}" class="hover:opacity-70 mx-2">Docs</a>
+				<a href="#characters" class="hover:opacity-70">Characters</a>
+			</div>
+			<div class="mt-7 mb-15">
+				<h1 class="inline text-zinc-400">Created by</h1>
+				<a href="https://github.com/AbdullaNG" class="hover:opacity-70 mx-2 font-medium underline" target="blank">Abdulla</a>
+			</div>
+		</section>
+	</footer>
+</body>
+</html>
