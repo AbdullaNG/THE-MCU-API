@@ -2,7 +2,6 @@
 
 ![Build Status](https://img.shields.io/github/license/AbdullaNG/THE-MCU-API?style=flat&label=License)  
 ![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue)  
-![License](https://img.shields.io/github/license/AbdullaNG/THE-MCU-API)  
 ![API Docs](https://img.shields.io/badge/Docs-Swagger-brightgreen) 
 
 THE MCU API is a modern, scalable RESTful API built using **Python**, **Django**, and **Django REST Framework (DRF)**.  
